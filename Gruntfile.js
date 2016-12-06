@@ -3,23 +3,23 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
-            files: ['Gruntfile.js', 'js/collections/*.js', 'js/models/*.js', 'js/basic/**/*.js'],
+            files: ['src/js/**/*.js'],
             options: {
                 jshintrc: true,
                 globals: {
                     jQuery: true
                 },
-                ignores: ['js/lib/*.js']
+                ignores: ['src/js/lib/*.js']
             }
         },
         build: {
             options: {
-                banner: '/*! Spreadsheet <%= pkg.version %> */\n'
+                banner: '/*! customSearch <%= pkg.version %> */\n'
             },
 
             all: {
-                name: 'spreadsheet/spreadsheet',
-                dest: 'dist/fengniao.js',
+                name: 'app',
+                dest: 'src/js/cs.min.js',
 
                 // 在没有jquery类似的库的前提下可以设置builtin,去除强行依赖。
                 builtin: {
