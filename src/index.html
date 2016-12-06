@@ -1,1 +1,225 @@
-this is demo html
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>custom-search-editor</title>
+        <link rel="stylesheet" href="css/lib/bootstrap.css">
+        <link rel="stylesheet" href="css/plugin/tree/tree.css">
+        <link rel="stylesheet" href="css/dashboard.css">
+        <!-- <link rel="stylesheet" href="css/plugin/tree.css"> -->
+    </head>
+    <body>
+        <!-- <div style="height:150px;"></div> -->
+        <div class="panel panel-default top-panel">
+            <div class="panel-heading clearfix">
+                <div class="btn-group pull-right">
+                  <a href="preview.html" class="btn btn-warning active">预览结果</a>
+                  <button type="button" class="btn btn-warning">加入报表</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar stayleft">
+                    <div class="panel panel-default extend-bounday">
+                        <div class="panel-heading">指标树</div>
+                        <div class="panel-body">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="请输入关键字">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">查询</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <ul id="treeDemo" class="ztree ztree-margin"><li id="treeDemo_1" class="level0" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_1_switch" title="" class="button level0 switch root_open" treenode_switch=""></span><a id="treeDemo_1_a" class="level0 curSelectedNode" treenode_a="" onclick="" target="_blank" style="" title="模板分类树"><span id="treeDemo_1_ico" title="" treenode_ico="" class="button ico_open" style=""></span><span id="treeDemo_1_span" class="node_name">模板分类树</span></a><ul id="treeDemo_1_ul" class="level0 " style="overflow: hidden;"><li id="treeDemo_2" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_2_switch" title="" class="button level1 switch center_close" treenode_switch=""></span><a id="treeDemo_2_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="wz"><span id="treeDemo_2_ico" title="" treenode_ico="" class="button ico_close" style=""></span><span id="treeDemo_2_span" class="node_name">wz</span></a></li><li id="treeDemo_3" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_3_switch" title="" class="button level1 switch center_close" treenode_switch=""></span><a id="treeDemo_3_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="chen"><span id="treeDemo_3_ico" title="" treenode_ico="" class="button ico_close" style=""></span><span id="treeDemo_3_span" class="node_name">chen</span></a></li><li id="treeDemo_4" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_4_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_4_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="yxhtest"><span id="treeDemo_4_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_4_span" class="node_name">yxhtest</span></a></li><li id="treeDemo_5" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_5_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_5_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="testlyj"><span id="treeDemo_5_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_5_span" class="node_name">testlyj</span></a></li><li id="treeDemo_6" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_6_switch" title="" class="button level1 switch center_close" treenode_switch=""></span><a id="treeDemo_6_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="lyf"><span id="treeDemo_6_ico" title="" treenode_ico="" class="button ico_close" style=""></span><span id="treeDemo_6_span" class="node_name">lyf</span></a></li><li id="treeDemo_7" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_7_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_7_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="0601"><span id="treeDemo_7_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_7_span" class="node_name">0601</span></a></li><li id="treeDemo_8" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_8_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_8_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="测试0.14"><span id="treeDemo_8_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_8_span" class="node_name">测试0.14</span></a></li><li id="treeDemo_9" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_9_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_9_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="chen1"><span id="treeDemo_9_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_9_span" class="node_name">chen1</span></a></li><li id="treeDemo_10" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_10_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_10_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="111111"><span id="treeDemo_10_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_10_span" class="node_name">111111</span></a></li><li id="treeDemo_11" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_11_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_11_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="test11"><span id="treeDemo_11_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_11_span" class="node_name">test11</span></a></li><li id="treeDemo_12" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_12_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_12_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="zq1"><span id="treeDemo_12_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_12_span" class="node_name">zq1</span></a></li><li id="treeDemo_13" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_13_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_13_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="Filter2"><span id="treeDemo_13_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_13_span" class="node_name">Filter2</span></a></li><li id="treeDemo_14" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_14_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_14_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="0615分类"><span id="treeDemo_14_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_14_span" class="node_name">0615分类</span></a></li><li id="treeDemo_15" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_15_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_15_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="wzftest"><span id="treeDemo_15_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_15_span" class="node_name">wzftest</span></a></li><li id="treeDemo_16" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_16_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_16_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="223"><span id="treeDemo_16_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_16_span" class="node_name">223</span></a></li><li id="treeDemo_17" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_17_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_17_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="0527"><span id="treeDemo_17_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_17_span" class="node_name">0527</span></a></li><li id="treeDemo_18" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_18_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_18_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="Filter"><span id="treeDemo_18_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_18_span" class="node_name">Filter</span></a></li><li id="treeDemo_19" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_19_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_19_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="1212"><span id="treeDemo_19_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_19_span" class="node_name">1212</span></a></li><li id="treeDemo_20" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_20_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_20_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="用例"><span id="treeDemo_20_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_20_span" class="node_name">用例</span></a></li><li id="treeDemo_21" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_21_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_21_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="lq1011"><span id="treeDemo_21_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_21_span" class="node_name">lq1011</span></a></li><li id="treeDemo_22" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_22_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_22_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="testnew5"><span id="treeDemo_22_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_22_span" class="node_name">testnew5</span></a></li><li id="treeDemo_23" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_23_switch" title="" class="button level1 switch center_close" treenode_switch=""></span><a id="treeDemo_23_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="test_lyj"><span id="treeDemo_23_ico" title="" treenode_ico="" class="button ico_close" style=""></span><span id="treeDemo_23_span" class="node_name">test_lyj</span></a></li><li id="treeDemo_24" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_24_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_24_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="testnew2"><span id="treeDemo_24_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_24_span" class="node_name">testnew2</span></a></li><li id="treeDemo_25" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_25_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_25_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="演示模板0001"><span id="treeDemo_25_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_25_span" class="node_name">演示模板0001</span></a></li><li id="treeDemo_26" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_26_switch" title="" class="button level1 switch center_docu" treenode_switch=""></span><a id="treeDemo_26_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="testzd001"><span id="treeDemo_26_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_26_span" class="node_name">testzd001</span></a></li><li id="treeDemo_27" class="level1" tabindex="0" hidefocus="true" treenode=""><span id="treeDemo_27_switch" title="" class="button level1 switch bottom_docu" treenode_switch=""></span><a id="treeDemo_27_a" class="level1" treenode_a="" onclick="" target="_blank" style="" title="liaojin"><span id="treeDemo_27_ico" title="" treenode_ico="" class="button ico_docu" style=""></span><span id="treeDemo_27_span" class="node_name">liaojin</span></a></li></ul></li></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-2 sidebar stayright">
+                    <div class="panel panel-default extend-bounday">
+                        <div class="panel-heading">
+                            指标列表
+                            <span class="btn btn-link btn-sm patch-delete">批量删除</span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel panel-primary extend-panel-body">
+                                <div class="panel-heading panel-toolbar">
+                                    <label>短信业务量</label>
+                                    <span class="glyphicon glyphicon-trash single-delete"></span>
+                                    <span class="glyphicon glyphicon-floppy-saved single-saved"></span>
+                                </div>
+                                <div class="panel-body bg-info">
+                                    <p class="">统计主体：移动</p>
+                                    <p class="">地区：移动</p>
+                                    <p class="">数据来源：移动</p>
+                                    <p class="">时间：移动</p>
+                                </div>
+                            </div>
+                            <div class="panel panel-default extend-panel-body">
+                                <div class="panel-heading">短信业务量</div>
+                                <div class="panel-body">
+                                    <p class="">统计主体：移动</p>
+                                    <p class="">地区：移动</p>
+                                    <p class="">数据来源：移动</p>
+                                    <p class="">时间：移动</p>
+                                </div>
+                            </div>
+                            <div class="panel panel-default extend-panel-body">
+                                <div class="panel-heading">短信业务量</div>
+                                <div class="panel-body">
+                                    <p class="">统计主体：移动</p>
+                                    <p class="">地区：移动</p>
+                                    <p class="">数据来源：移动</p>
+                                    <p class="">时间：移动</p>
+                                </div>
+                            </div>
+                            <div class="panel panel-default extend-panel-body">
+                                <div class="panel-heading">短信业务量</div>
+                                <div class="panel-body">
+                                    <p class="">统计主体：移动</p>
+                                    <p class="">地区：移动</p>
+                                    <p class="">数据来源：移动</p>
+                                    <p class="">时间：移动</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2 main">
+                    <div class="nav-sidebar">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">指标详细</div>
+                            <div class="panel-body">
+                                <b>行政区划：</b> 指国家对行政区域的划分。根据有关法规规定，我国的行政区域划分如下：(1)全国分为省、自治区、直辖市；(2)省、自治区分为自治州、县、自治县、市；(3)自治州分为县、自治县、市；(4)县、自治县分为乡、民族乡、镇； (5)直辖市和较大的市分为区、县；(6)国家在必要时设立的特别行政区。
+                            </div>
+                            <div class="panel-footer">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">统计主体</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control">
+                                                <option value="">中国移动</option>
+                                                <option value="">中国联通</option>
+                                                <option value="">中国电信</option>
+                                            </select>
+                                        </div>
+                                        <label for="inputPassword3" class="col-sm-2 control-label">地区</label>
+                                        <div class="col-sm-4"><select class="form-control">
+                                            <option value="">全国</option>
+                                            <option value="">北京</option>
+                                            <option value="">上海</option>
+                                        </select></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">数据来源</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control">
+                                                <option value="">统计局</option>
+                                                <option value="">地方数据</option>
+                                                <option value="">财政</option>
+                                            </select>
+                                        </div>
+                                        <label for="inputPassword3" class="col-sm-2 control-label">时间</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control">
+                                                <option value="">月度</option>
+                                                <option value="">季度</option>
+                                                <option value="">年度</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="table-th-bg">
+                                    <th></th>
+                                    <th>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox"></label>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox"></label>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox"></label>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr class="table-deep-bg">
+                                    <th class="table-th-bg">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox"></label>
+                                        </div>
+                                    </th>
+                                    <th >First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Username</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="table-th-bg">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox"></label>
+                                        </div>
+                                    </td>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-th-bg">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox"></label>
+                                        </div>
+                                    </td>
+                                    <td>Larry the Bird</td>
+                                    <td>Larry the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-th-bg">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox"></label>
+                                        </div>
+                                    </td>
+                                    <td>Larry the Bird</td>
+                                    <td>Larry the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-th-bg">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox"></label>
+                                        </div>
+                                    </td>
+                                    <td>Larry the Bird</td>
+                                    <td>Larry the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-th-bg">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox"></label>
+                                        </div>
+                                    </td>
+                                    <td>Larry the Bird</td>
+                                    <td>Larry the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </body>
+</html>

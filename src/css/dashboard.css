@@ -1,0 +1,142 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+.panel,.panel-heading {
+  border-radius:0;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+.stayleft{
+  left:5px;
+}
+.stayright{
+  right: 5px;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 3px 30px;
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+.extend-bounday{
+  margin: -21px;
+}
+.extend-panel-body{
+  margin: -16px;
+}
+.checkbox{
+  margin: 0;
+}
+.patch-delete{
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+.single-delete{
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  padding: 5px;
+}
+.single-saved{
+  position: absolute;
+  right: 35px;
+  top: 8px;
+  padding: 5px;
+}
+.panel-toolbar{
+  position: relative;
+}
+.top-panel{
+  margin: 0 5px;
+}
+.table-th-bg{
+  background-color: #d2e1fd;
+}
+.table-deep-bg{
+  color:#fff;
+  background-color: #7097f5;
+}
