@@ -1,5 +1,5 @@
-'use strict';
 define(function(require) {
+	'use strict';
 	var Backbone = require('lib/backbone'),
 		ExplainModel;
 	/**
@@ -12,8 +12,8 @@ define(function(require) {
 			 * table数据
 			 * @type {string}
 			 */
-			label :''
+			context :''
 		}
 	});
-	return new ExplainModel();
+	return ExplainModel;
 });

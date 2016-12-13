@@ -1,5 +1,5 @@
-'use strict';
 define(function(require) {
+	'use strict';
 	var Backbone = require('lib/backbone'),
 		FilterModel;
 	/**
@@ -12,12 +12,12 @@ define(function(require) {
 			 * 条件级别
 			 * @type {Number}
 			 */
-	        level: 0,
+	        level: 2,
 	        /**
 	         * 条件id
 	         * @type {String}
 	         */
-	        id: '',
+	        fid: '',
 	        /**
 	         * 条件名称
 	         * @type {String}
@@ -27,7 +27,7 @@ define(function(require) {
 	         * 是否选中
 	         * @type {Boolean}
 	         */
-	        select: false
+	        selected: false
 		}
 	});
 	return FilterModel;

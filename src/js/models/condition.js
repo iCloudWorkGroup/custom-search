@@ -1,5 +1,5 @@
-'use strict';
 define(function(require) {
+	'use strict';
 	var Backbone = require('lib/backbone'),
 		ConditionModel;
 	/**
@@ -8,11 +8,9 @@ define(function(require) {
 	 */
 	ConditionModel = Backbone.Model.extend({
 		defaults: {
-			/**
-			 * 保存json数据
-			 * @type {json}
-			 */
-			dataJSON: null
+			explain: '',
+			table: '',
+			filters: []
 		}
 	});
 	return ConditionModel;

@@ -1,11 +1,12 @@
-'use strict';
 define(function(require) {
+    'use strict';
 	var Backbone = require('lib/backbone'),
-		conditionModel = require('models/condition'),
+		ConditionModel = require('models/condition'),
 		Conditions;
 		
 	Conditions = Backbone.Collection.extend({
-		model: conditionModel
+		model: ConditionModel,
+        url:''
 	});
 	return new Conditions();
 });

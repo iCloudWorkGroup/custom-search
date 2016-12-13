@@ -1,5 +1,5 @@
-'use strict';
 define(function(require) {
+	'use strict';
 	var Backbone = require('lib/backbone'),
 		DataModel;
 	/**
@@ -12,8 +12,8 @@ define(function(require) {
 			 * table数据
 			 * @type {object}
 			 */
-			table:null
+			content:''
 		}
 	});
-	return new DataModel();
+	return DataModel;
 });
