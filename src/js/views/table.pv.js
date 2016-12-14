@@ -1,28 +1,30 @@
 define(function(require) {
     'use strict';
-    /**
-     * those most of code copy from old lib, so mach bad style
-     */
     var Backbone = require('lib/backbone'),
         $ = require('lib/jquery'),
         BuildTable = require('lib/cubetable'),
-        cache = require('util/cache'),
-        TableView;
-    TableView = Backbone.View.extend({
-        el: '.JtableContainer',
+        TablePView;
+    TablePView = Backbone.View.extend({
+        el: '.JpreivewTable',
         events: {
-            'click .rowCheckbox': 'RowStatus',
-            'click .colCheckbox': 'ColStatus'
+            'click .preview-table th span': 'sortData'
         },
         initialize: function() {
-            Backbone.on('fillTable', this.JSON2HTML, this);
+            Backbone.on('fillPreviewTable', this.JSON2HTML, this);
+        },
+        render:function(){
+            this.$el.html(this.toHtml());
+            return this;
+        },
+        sortData: function(e) {
+            var $currentEl = $(e.currentTarget);
+            this.drawChart.sort($currentEl.attr("code"));
+            this.render();
         },
         JSON2HTML: function(data) {
             this.drawChart = new BuildTable();
             this.drawChart.CreateTable(data);
-            this.drawChart.setTu(true);
-            this.$el.html(this.toHtml());
-            return this;
+            this.render();
         },
         toHtml: function() {
             var datasort = this.drawChart.sort();
@@ -32,7 +34,7 @@ define(function(require) {
                     sortClass1 = datasort.ifasc ? "up" : "down";
                 }
             }
-            var str1 = "<table class='table table-bordered table-striped' cellspacing='0' cellpadding='0' width='100%'><thead><tr class='tr-title table-th-bg'>";
+            var str1 = "<table class='preview-table table table-bordered table-striped' cellspacing='0' cellpadding='0' width='100%'><thead><tr class='tr-title table-th-bg'>";
 
             str1 += "<th style='text-align:center;'><strong>" + this.drawChart.getCaption() + "</strong><span class='" + sortClass1 + "' code='" + this.drawChart.RowCode() + "'></span></th>";
             var collist = this.drawChart.getColList();
@@ -167,47 +169,7 @@ define(function(require) {
                 $(".table-container").next().remove();
             }
             return str1;
-        },
-        RowStatus: function(e) {
-            var $currentEl = $(e.currentTarget),
-                setCodes = this.drawChart.getCheckedList(),
-                curCode = $currentEl.attr("code"),
-                rowIndex = $currentEl.parents("tr").index(),
-                $tr = $("tbody tr", this.$el);
-            if ($currentEl.prop("checked")) {
-                $tr.eq(rowIndex).find("td").addClass("l");
-                setCodes.rows.push(curCode);
-            } else {
-                $tr.eq(rowIndex).find("td").removeClass("l");
-                setCodes.rows.splice(curCode);
-            }
-            this.drawChart.setCheckedByCode(setCodes.rows, setCodes.cols);
-            this.cacheStatus(setCodes.rows, setCodes.cols);
-        },
-        ColStatus: function(e) {
-            var $currentEl = $(e.currentTarget),
-                setCodes = this.drawChart.getCheckedList(),
-                curCode = $currentEl.attr("code"),
-                colIndex = $currentEl.parent().index(),
-                $tr = $("tbody tr", this.$el);
-            if ($currentEl.prop("checked")) {
-                $tr.each(function() {
-                    $("td", this).eq(colIndex).addClass("t");
-                });
-                setCodes.cols.push(curCode);
-            } else {
-                $tr.each(function() {
-                    $("td", this).eq(colIndex).removeClass("t");
-                });
-                setCodes.cols.splice(curCode, 1);
-            }
-            this.drawChart.setCheckedByCode(setCodes.rows, setCodes.cols);
-            this.cacheStatus(setCodes.rows, setCodes.cols);
-        },
-        cacheStatus: function(datarows, datacols) {
-            cache.rows = datarows;
-            cache.cols = datacols;
         }
     });
-    return TableView;
+    return TablePView;
 });

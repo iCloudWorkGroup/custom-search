@@ -17,7 +17,8 @@ define(function(require) {
         },
         addReport: function(item) {
             var filterintegrate = new FilterIntegrate({
-                model: item
+                model: item,
+                status:'edit'
             });
             this.$listContainer.append(filterintegrate.render().el);
         },

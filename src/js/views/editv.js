@@ -6,23 +6,25 @@ define(function(require) {
         conditionCollection = require('collections/conditions'),
         optionCollection = require('collections/options'),
         FilterGroupView = require('views/filtergroupv'),
-        tabTemplate;
-    tabTemplate = Backbone.View.extend({
-        el: '.JoprContainer',
+        FilterView = require('views/filterv'),
+        ExplainView = require('views/explainv'),
+        TableView = require('views/tablev'),
+        SearchView = require('views/searchv'),
+        EditView;
+    EditView = Backbone.View.extend({
+        el: '.JeditContainer',
         events: {
             'click .JaddReport': 'createReport'
         },
         initialize: function() {
-            
+            this.render();
         },
-        render: function() {
-            if (cache.status === 'preview' || 'edit') {
-                this.$el.html($('#template-' + cache.status + '-main').html());
-            }
-            this.bindView();
-        },
-        bindView:function(){
+        render:function(){
             new FilterGroupView();
+            new FilterView();
+            new ExplainView();
+            new TableView();
+            new SearchView();
         },
         createReport: function() {
             var optionList;
@@ -31,13 +33,13 @@ define(function(require) {
                 explain: cache.explain,
                 table: cache.table,
                 filters: optionList,
-                rows:cache.rows,
-                cols:cache.cols
+                rows: cache.rows,
+                cols: cache.cols
             });
         },
         clearView: function() {
             this.$el.html('this is page 404');
         }
     });
-    return tabTemplate;
+    return EditView;
 });

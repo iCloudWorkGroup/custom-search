@@ -9,16 +9,19 @@
         <!-- <link rel="stylesheet" href="css/plugin/tree.css"> -->
     </head>
     <body>
-        <div class="JoprContainer"></div>
+        <div class="JoprContainer">
+            <div class="JeditContainer"></div>
+            <div class="JpreviewContainer"></div>
+        </div>
         <!-- <div style="height:150px;"></div> -->
         <script type="text/template" id="template-preview-main">
             <div class="panel panel-default top-panel">
                 <div class="panel-heading clearfix">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-warning">加入收藏</button>
-                        <button type="button" class="btn btn-warning">制作报告</button>
-                        <button type="button" class="btn btn-warning">下载</button>
-                        <a href="#edit" class="btn btn-warning active">返回编辑</a>
+                    <div class="btn-group pull-right JPtoolbar">
+                        <button type="button" class="btn btn-warning favorite">加入收藏</button>
+                        <button type="button" class="btn btn-warning make">制作报告</button>
+                        <button type="button" class="btn btn-warning download">下载</button>
+                        <a href="#edit" class="btn btn-warning active tabPreview">返回编辑</a>
                     </div>
                 </div>
             </div>
@@ -27,32 +30,18 @@
                     <div class="col-sm-3 col-md-2 sidebar stayleft">
                         <div class="panel panel-default extend-bounday">
                             <div class="panel-heading">指标列表</div>
-                            <div class="panel-body">
-                                <div class="panel panel-primary extend-panel-body">
-                                    <div class="panel-heading">
-                                        <label>短信业务量</label>
-                                    </div>
-                                    <div class="panel-body bg-info">
-                                        <p class="">统计主体：移动</p>
-                                        <p class="">地区：移动</p>
-                                        <p class="">数据来源：移动</p>
-                                        <p class="">时间：移动</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="panel-body JfilterGroupPreview"></div>
                         </div>
                     </div>
                     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                         <div class="preview-nav-sidebar">
-                            <div class="panel panel-default">
+                            <div class="panel panel-default reset-margin">
                                 <div class="panel-heading panel-toolbar">
                                     指标表
                                     <span class="glyphicon glyphicon-refresh single-delete"></span>
                                 </div>
-                                <div class="JpreivewTable">
-                                </div>
                             </div>
-                            
+                            <div class="JpreivewTable"></div>
                         </div>
                     </div>
                 </div>
@@ -63,7 +52,7 @@
                 <div class="panel-heading clearfix">
                     <div class="btn-group pull-right">
                         <a href="javascript:;" class="btn btn-warning JaddReport">加入报表</a>
-                        <a href="#preview" class="btn btn-warning active">预览结果</a>
+                        <a href="#preview" class="btn btn-warning active JtabPreview">预览结果</a>
                     </div>
                 </div>
             </div>
@@ -120,7 +109,6 @@
                 </select>
             </div>
         </script>
-
         <script type="text/template" id="template-filtergroup">
             <div class="panel-heading">
                 <label><%-filters[0].toJSON().level%></label>

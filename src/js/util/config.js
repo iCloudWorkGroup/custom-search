@@ -16,7 +16,9 @@ define(function(argument) {
         }],
         foldnUrl: 'https://private-f4749a-customsearch.apiary-mock.com/tree/getchild?1',
         oprUrl: 'https://private-f4749a-customsearch.apiary-mock.com/container/result',
-        searchUrl: 'https://private-f4749a-customsearch.apiary-mock.com/tree/search?'
+        searchUrl: 'https://private-f4749a-customsearch.apiary-mock.com/tree/search?',
+        transUrl:'https://private-f4749a-customsearch.apiary-mock.com/container/trans/',
+        container:['edit','preview']
     };
     return config;
 })

@@ -153,3 +153,20 @@
   box-shadow: none;
   -webkit-box-shadow:none;
 }
+
+
+.preview-table th span{
+    width: 7px;
+    height: 12px;
+    background: url(../img/icon-sort.png) -16px 0 no-repeat;
+    display: inline-block;
+    zoom:1;cursor: pointer;
+    margin-left: 3px;
+}
+.preview-table th span.up {
+    background-position: 0 0;
+}
+
+.preview-table th span.down {
+    background-position: -8px 0;
+}

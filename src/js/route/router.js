@@ -2,38 +2,44 @@ define(function(require) {
     'use strict';
     var Backbone = require('lib/backbone'),
         cache = require('util/cache'),
-        TabTemplate = require('views/tabtemplatev'),
-        FilterView = require('views/filterv'),
-        ExplainView = require('views/explainv'),
-        TableView = require('views/tablev'),
-        SearchView = require('views/searchv'),
-        config = require('util/config'),
-        $ = require('lib/jquery'),
+        AppView = require('views/appv'),
         Router;
     Router = Backbone.Router.extend({
         routes: {
             '*filter': 'setStatus'
         },
-        setStatus: function(status, id) {
-            var tabTemplate = new TabTemplate();
-            if (status === 'preview' && id !== 0 || status === 'edit') {
-                cache.status = status;
-                tabTemplate.render();
-                new FilterView(config);
-                new ExplainView();
-                new TableView();
-                new SearchView();
-            } else {
-                tabTemplate.clearView();
-                return;
+        editRender: true,
+        previewRender: true,
+        setStatus: function(status) {
+            if (this.editRender || this.previewRender && !this.appView) {
+                this.appView = new AppView();
+            }
+            if (status === 'edit') {
+                this.appView.oprView({
+                    hideName: 'preview',
+                    showName: 'edit'
+                });
+                if (this.editRender) {
+                    this.editRender = false;
+                    cache.status = status;
+                    this.appView.render();
+                    this.appView.initEditChildren();
+                }
+            }
+            if (status === 'preview') {
+                this.appView.oprView({
+                    hideName: 'edit',
+                    showName: 'preview'
+                });
+                if (this.previewRender) {
+                    this.previewRender = false;
+                    cache.status = status;
+                    this.appView.render();
+                    this.appView.initPreviewChildren();
+                }
             }
         }
     });
     new Router();
     Backbone.history.start();
-    // var y = {
-    //     filters:[{name:'1212'}]
-    // }
-    // var x = _.template($('#template-filtergroup').html());
-    // document.body.innerHTML = x(y);
 });

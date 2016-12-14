@@ -12,18 +12,15 @@ define(function(require) {
         FilterView;
     FilterView = Backbone.View.extend({
         el: '.JfiltersContainer',
-        events: {
-
-        },
-        initialize: function(config) {
+        initialize: function() {
             this.listenTo(selectCollections, 'add', this.addOne);
             Backbone.on('bindTree', this.initTree, this);
             Backbone.on('unionFilters', this.unionFilters, this);
-            this.initTree();
-            this.initConstrutor(config.select);
+            this.render();
         },
         render: function() {
-
+            this.initTree();
+            this.initConstrutor(CONFIG.select);
         },
         addAll: function() {
 

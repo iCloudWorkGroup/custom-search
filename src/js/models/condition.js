@@ -10,7 +10,9 @@ define(function(require) {
 		defaults: {
 			explain: '',
 			table: '',
-			filters: []
+			filters: [],
+			rows:[],
+			cols:[]
 		}
 	});
 	return ConditionModel;
