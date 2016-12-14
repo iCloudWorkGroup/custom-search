@@ -16,8 +16,9 @@ define(function(argument) {
         }],
         foldnUrl: 'https://private-f4749a-customsearch.apiary-mock.com/tree/getchild?1',
         oprUrl: 'https://private-f4749a-customsearch.apiary-mock.com/container/result',
-        searchUrl: 'https://private-f4749a-customsearch.apiary-mock.com/tree/search?',
+        searchUrl: 'https://private-f4749a-customsearch.apiary-mock.com/tree/search?',//指标搜索
         transUrl:'https://private-f4749a-customsearch.apiary-mock.com/container/trans/',
+        transposeUrl:'https://private-f4749a-customsearch.apiary-mock.com/table/transpose',//转置
         container:['edit','preview']
     };
     return config;

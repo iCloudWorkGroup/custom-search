@@ -5,7 +5,8 @@ define(function(require) {
         explain: '',
         table: '',
         cols:[],
-        rows:[]
+        rows:[],
+        condition:''
     };
     return cache;
 });
