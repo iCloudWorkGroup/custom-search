@@ -108,15 +108,25 @@
                 </select>
             </div>
         </script>
+        <!--此处的模板代码经过改写，比较难看出来，原来的尖括号改成双大括号-->
         <script type="text/template" id="template-filtergroup">
             <div class="panel-heading">
+                {{ if(filters[0]["toJSON"]){ }}
                 <label>{{= filters[0].toJSON().level }}</label>
+                {{ }else{ }}
+                <label>{{= filters[0].level }}</label>
+                {{ } }}
             </div>
             <div class="panel-body">
                 {{ _.each(filters,function (item, i) { }}
                     {{ if (i){ }}
                         <p class="">
-                        {{= configName[i-1]["name"] }}:{{= item.toJSON().name }}
+                        {{= configName[i-1]["name"] }}:
+                        {{ if(item["toJSON"]){ }}
+                            {{= item.toJSON().name }}
+                        {{ }else{ }}
+                            {{= item.name }}
+                        {{ } }}
                         </p>
                     {{ } }}
                 {{ }) }}
