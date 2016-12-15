@@ -4,6 +4,9 @@ define(function(require) {
         cache = require('util/cache'),
         AppView = require('views/appv'),
         MODE = require('util/mode'),
+        CONFIG = require('util/config'),
+        send = require('util/send'),
+        conditionCollection = require('collections/conditions'),
         Router;
     Router = Backbone.Router.extend({
         routes: {
@@ -12,18 +15,21 @@ define(function(require) {
         },
         editRender: true, //是否渲染过编辑模式
         previewRender: true, //是否渲染过预览模式
-        init: true,
         setStatus: function(status, csid) {
             //是编辑或者预览模式
             //是合法的id值
             //第一次进入页面时，存储查询的ID
             if (status === 'edit' || status === 'preview') {
-                if (csid && typeof parseInt(csid) === 'number' && this.init) {
-                    this.init = false;
-                    MODE.fetch = true;
+                if (csid && typeof parseInt(csid) === 'number' && MODE.init) {
                     MODE.id = csid;
+                    MODE.fetch = true;
                 }
                 this.switchRender(status);
+
+                if (MODE.init && MODE.fetch) {
+                    MODE.fetch = MODE.init = false;
+                    this.revertData();
+                }
             }
         },
         switchRender: function(currentStatus) {
@@ -53,6 +59,31 @@ define(function(require) {
                     this.appView.render();
                     this.appView.initPreviewChildren();
                 }
+            }
+        },
+        revertData: function() {
+            this.fetchData(MODE.id).then(function(callData) {
+                this.addAll(callData);
+            }.bind(this));
+        },
+        fetchData: function(csid) {
+            var applyData = new Promise(function(resovle, reject) {
+                send({
+                    url: CONFIG.reduceUrl + csid,
+                    type: 'get',
+                    success: function(data) {
+                        resovle(data);
+                    }
+                });
+            });
+            return applyData;
+        },
+        addAll: function(dataList) {
+            var modelList = dataList.returndata,
+                len = modelList.length,
+                i = 0;
+            for (; i < len; i++) {
+                conditionCollection.add(modelList[i])
             }
         }
     });
