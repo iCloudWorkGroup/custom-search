@@ -7,12 +7,11 @@ define(function(require) {
     Router = Backbone.Router.extend({
         routes: {
             '*filter/:query': 'setStatus',
-            '*filter':'setStatus'
+            '*filter': 'setStatus'
         },
         editRender: true,
         previewRender: true,
         setStatus: function(status, csid) {
-            console.log(status);
             if (this.editRender || this.previewRender && !this.appView) {
                 this.appView = new AppView();
             }
