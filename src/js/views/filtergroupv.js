@@ -1,6 +1,6 @@
 define(function(require) {
     'use strict';
-    var Backbone = require('lib/Backbone'),
+    var Backbone = require('lib/backbone'),
         conditionCollection = require('collections/conditions'),
         FilterIntegrate = require('views/filterintegratev'),
         $ = require('jquery'),

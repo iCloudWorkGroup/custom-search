@@ -53,7 +53,7 @@ define(function(require) {
                     open: false,
                     isParent: true,
                     chkDisabled: true,
-                    level:0
+                    level: 0
                 }
             };
             setting = {
@@ -76,7 +76,7 @@ define(function(require) {
             $.fn.zTree.init($(currentConfig.container), setting, currentConfig.baseNode);
         },
         unionFilters: function(e, treeId, treeNode) {
-            if(treeNode.level === 0){
+            if (treeNode.level === 0) {
                 return;
             }
             send({
@@ -92,10 +92,16 @@ define(function(require) {
             });
         },
         mosaicData: function(node) {
-            var configData = optionCollections.getSelectedList();
+            var configData = optionCollections.getSelectedExcludByLevel(1),
+                currentNode = {
+                    name: node.name,
+                    level: 1,
+                    fid: node.id
+                };
+            configData.push(currentNode);
             return JSON.stringify({
                 filters: configData,
-                step: node.level
+                step: 1
             });
         }
     });

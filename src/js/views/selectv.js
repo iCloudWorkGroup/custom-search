@@ -9,7 +9,8 @@ define(function(require) {
         className: 'col-md-6 form-group',
         template: _.template($('#template-select').html()),
         events: {
-            'change': 'rerender'
+            'change': 'rerender',
+            'click': 'optionList'
         },
         initialize: function() {
             this.listenTo(optionCollections, 'add', this.addOption);
@@ -20,6 +21,9 @@ define(function(require) {
             this.$el.html(this.template(this.model.toJSON()));
             this.$select = $('select', this.$el);
             return this;
+        },
+        optionList: function(e) {
+            
         },
         rerender: function() {
             Backbone.trigger('unionFilters');
