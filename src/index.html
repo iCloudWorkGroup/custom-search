@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/dashboard.css">
     </head>
     <body>
+        
         <div class="JoprContainer">
             <div class="JeditContainer"></div>
             <div class="JpreviewContainer"></div>
@@ -103,9 +104,13 @@
         <script type="text/template" id="template-select">
             <label class="col-sm-4 control-label">{{= name }}</label>
             <div class="col-sm-8">
-                <select class="form-control" data-level="{{= level }}">
-                    <option>请选择</option>
-                </select>
+                <div class="dropdown" data-level="{{= level }}">
+                  <button class="btn btn-default dropdown-toggle cs-dropdown" type="button">
+                  <label>请选择</label>
+                  <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu cs-dropdown-menu"></ul>
+                </div>
             </div>
         </script>
         <!--此处的模板代码经过改写，比较难看出来，原来的尖括号改成双大括号-->

@@ -15,7 +15,7 @@ define(function(require) {
         initialize: function() {
             this.listenTo(selectCollections, 'add', this.addOne);
             Backbone.on('bindTree', this.initTree, this);
-            Backbone.on('unionFilters', this.unionFilters, this);
+            Backbone.on('fillGlobalObj', this.fillGlobalObj, this);
             this.render();
         },
         render: function() {
@@ -79,15 +79,40 @@ define(function(require) {
             if (treeNode.level === 0) {
                 return;
             }
+            this.fillGlobalObj({
+                treeNode: treeNode,
+                step: 1
+            });
+        },
+        fillGlobalObj: function(cfg) {
+            var sendData;
+            if (cfg.step === 1) {
+                sendData = this.mosaicData(cfg.treeNode);
+            } else {
+                var currentNode = {
+                    name: cfg.name,
+                    fid: cfg.fid,
+                    level: cfg.step
+                }
+                var configData = optionCollections.getSelectedExcludByLevel(cfg.step);
+                configData.push(currentNode);
+                sendData = JSON.stringify({
+                    filters: configData,
+                    step: cfg.step
+                });
+            }
             send({
                 url: CONFIG.oprUrl,
-                data: this.mosaicData(treeNode),
+                data: sendData,
                 success: function(data) {
                     Backbone.trigger('reFillOption', data.filters);
                     Backbone.trigger('fillExplain', data.explain);
                     Backbone.trigger('fillTable', data.table);
                     cache.explain = data.explain;
                     cache.table = data.table;
+                    Backbone.trigger('controlDisplay', {
+                        isHide: true
+                    });
                 }
             });
         },

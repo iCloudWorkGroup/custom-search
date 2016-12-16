@@ -20,6 +20,7 @@ define(function(argument) {
         transUrl: 'https://private-f4749a-customsearch.apiary-mock.com/container/trans/', //制作报表，下载传递数据
         transposeUrl: 'https://private-f4749a-customsearch.apiary-mock.com/table/transpose', //转置
         reduceUrl: 'https://private-f4749a-customsearch.apiary-mock.com/reduce/all/', //还原数据
+        optionsUrl: 'https://private-f4749a-customsearch.apiary-mock.com/container/optionlist',//获取option集合
         container: ['edit', 'preview']
     };
     return config;
