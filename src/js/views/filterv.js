@@ -95,7 +95,7 @@ define(function(require) {
             var configData = optionCollections.getSelectedList();
             return JSON.stringify({
                 filters: configData,
-                currentLevel: node.level
+                step: node.level
             });
         }
     });
