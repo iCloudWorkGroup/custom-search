@@ -51,7 +51,9 @@ define(function(require) {
                 baseNode: cfg.baseNode || {
                     name: "指标树",
                     open: false,
-                    isParent: true
+                    isParent: true,
+                    chkDisabled: true,
+                    level:0
                 }
             };
             setting = {
@@ -68,16 +70,18 @@ define(function(require) {
                     }
                 },
                 callback: {
-                    onClick: this.unionFilters
+                    onClick: this.unionFilters.bind(this)
                 }
             };
             $.fn.zTree.init($(currentConfig.container), setting, currentConfig.baseNode);
         },
-        unionFilters: function() {
-            var configData = optionCollections.getSelectedList();
+        unionFilters: function(e, treeId, treeNode) {
+            if(treeNode.level === 0){
+                return;
+            }
             send({
                 url: CONFIG.oprUrl,
-                data: JSON.stringify(configData),
+                data: this.mosaicData(treeNode),
                 success: function(data) {
                     Backbone.trigger('reFillOption', data.filters);
                     Backbone.trigger('fillExplain', data.explain);
@@ -85,7 +89,14 @@ define(function(require) {
                     cache.explain = data.explain;
                     cache.table = data.table;
                 }
-            })
+            });
+        },
+        mosaicData: function(node) {
+            var configData = optionCollections.getSelectedList();
+            return JSON.stringify({
+                filters: configData,
+                currentLevel: node.level
+            });
         }
     });
     return FilterView;
