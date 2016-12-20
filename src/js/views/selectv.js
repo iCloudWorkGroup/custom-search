@@ -15,19 +15,20 @@ define(function(require) {
         initialize: function() {
             this.listenTo(optionCollections, 'add', this.addOption);
             this.listenTo(optionCollections, 'reset', this.clearOption);
+            this.listenTo(optionCollections, 'remove', this.clearOption);
             Backbone.on('reFillOption', this.reFillOption, this);
-            Backbone.on('controlDisplay',this.controlDisplay,this);
+            Backbone.on('controlDisplay', this.controlDisplay, this);
             this.$el.on('click', 'button', this.model, this.optionList.bind(this));
         },
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             this.$optionContainer = $('.dropdown-menu', this.$el);
             this.$select = $('.dropdown', this.$el);
-            this.$button = $('button label',this.$el).eq(0);
+            this.$button = $('button label', this.$el).eq(0);
             return this;
         },
-        controlDisplay:function(cfg){
-            if(cfg){
+        controlDisplay: function(cfg) {
+            if (cfg) {
                 this.isHide = !cfg.isHide;
             }
             if (this.isHide) {
@@ -81,17 +82,23 @@ define(function(require) {
             });
             this.$optionContainer.append(optionview.render().el);
         },
-        reFillOption: function(data) {
-            optionCollections.reset();
-            this.fillOptions(data);
+        reFillOption: function(cfg) {
+            var i, len, list;
+            list = optionCollections.getSelectedListGreaterByLevel(cfg.step);
+            len = list.length;
+            for (; i < len; i++) {
+                optionCollections.remove(list[i]);
+            }
+            // optionCollections.reset();
+            this.fillOptions(cfg.filters);
         },
         fillOptions: function(fillData) {
             var len = fillData.length,
                 i = 0;
             for (; i < len; i++) {
                 optionCollections.add(fillData[i]);
-                if(!this.$button.attr('value') && this.$select.data('level') === fillData[i].level){
-                    this.$button.attr('value',fillData[i].id);
+                if (!this.$button.attr('value') && this.$select.data('level') === fillData[i].level) {
+                    this.$button.attr('value', fillData[i].id);
                     this.$button.text(fillData[i].name);
                 }
             };

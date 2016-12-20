@@ -182,7 +182,45 @@
   color: #333333;
   white-space: nowrap;
 }
-.cs-dropdown-menu li:hover{
+.cs-dropdown-menu li:hover {
   background: #ccc;
   cursor: pointer;
+}
+.processbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: top 0.5s;
+  -webkit-transition: top 0.5s;
+  -moz-transition: top 0.5s;
+  -o-transition: top 0.5s;
+
+}
+.processbar .pmessage {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 20px;
+  width: 100px;
+  margin-left: -50px;
+  background: #3071a9;
+  color: #fff;
+  z-index: 10002;
+  text-align: center;
+  border-radius:0 0 4px 4px;
+}
+.processbar .pmodal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  background: #000;
+  z-index: 1001;
+}
+.processbar.over {
+  z-index: -1;
+  top: -20px;
 }

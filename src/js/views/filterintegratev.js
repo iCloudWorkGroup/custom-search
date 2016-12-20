@@ -2,7 +2,7 @@ define(function(require) {
     'use strict';
     var Backbone = require('lib/backbone'),
         $ = require('lib/jquery'),
-        config = require('util/config'),
+        CONFIG = require('util/config'),
         cache = require('util/cache'),
         FilterIntegrateView;
     FilterIntegrateView = Backbone.View.extend({
@@ -15,13 +15,21 @@ define(function(require) {
         },
         render: function() {
             var splitObject = this.model.toJSON();
-            splitObject.configName = config.select;
+            splitObject.configName = CONFIG.select;
             this.$el.html(this.template(splitObject));
             return this;
         },
         previewTable: function(e) {
-            Backbone.trigger('fillPreviewTable', e.data.get('table'));
-            cache.condition = e.data;
+            send({
+                url: CONFIG.previewURL,
+                success: function(data) {
+                    Backbone.trigger('fillPreviewTable', data);
+                    cache.condition = e.data;
+                },
+                error: function() {
+                    console.log('async request preview table failed');
+                }
+            });
         }
     });
     return FilterIntegrateView;

@@ -1,11 +1,13 @@
 define(function(require) {
     'use strict';
     var $ = require('lib/jquery'),
+        CONFIG = require('util/config'),
         packAjax;
     packAjax = function(cfg) {
         var self = this,
             config = {},
-            NULLFUNC = function() {};
+            NULLFUNC = function() {},
+            $processbar = $(CONFIG.processbar).eq(0);
         if (!cfg.url) {
             return;
         }
@@ -18,8 +20,13 @@ define(function(require) {
             async: cfg.async !== undefined ? cfg.async : true,
             timeout: cfg.timeout || 5000,
             success: cfg.success || NULLFUNC,
+            beforeSend:cfg.beforeSend || function(){
+                $processbar.removeClass('over');
+            },
             error: cfg.error || NULLFUNC,
-            complete: cfg.complete || NULLFUNC,
+            complete: cfg.complete || function(){
+                $processbar.addClass('over');
+            },
             isPublic: cfg.isPublic !== undefined ? cfg.isPublic : true
         };
         $.ajax({
@@ -30,6 +37,7 @@ define(function(require) {
             async: config.async,
             data: config.data,
             timeout: config.timeout,
+            beforeSend:config.beforeSend,
             success: config.success,
             error: config.error,
             complete: config.complete
