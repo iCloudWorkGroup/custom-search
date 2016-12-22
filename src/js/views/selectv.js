@@ -15,7 +15,6 @@ define(function(require) {
         initialize: function() {
             this.listenTo(optionCollections, 'add', this.addOption);
             this.listenTo(optionCollections, 'reset', this.clearOption);
-            this.listenTo(optionCollections, 'remove', this.clearOption);
             Backbone.on('reFillOption', this.reFillOption, this);
             Backbone.on('controlDisplay', this.controlDisplay, this);
             this.$el.on('click', 'button', this.model, this.optionList.bind(this));
@@ -42,20 +41,26 @@ define(function(require) {
         optionList: function(e) {
             this.controlDisplay();
             if (!this.hasOptions) {
-                var configData = optionCollections.getSelectedList();
-                var sendData = JSON.stringify({
-                    filters: configData,
-                    step: parseInt(e.data.get('level'))
-                });
+                var configData = optionCollections.getSelectedList(),
+                    currentLevel = parseInt(e.data.get('level')),
+                    sendData = JSON.stringify({
+                        filters: configData,
+                        step: currentLevel
+                    });
                 send({
                     url: CONFIG.optionsUrl,
                     data: sendData,
                     success: function(dataList) {
                         var len = dataList.list.length,
-                            i = 0;
+                            i = 0,
+                            repeatOption = optionCollections.getSelectedByLevel(currentLevel);
                         for (; i < len; i++) {
-                            dataList.list[i].selected = false;
-                            this.addOption(dataList.list[i]);
+                            if (repeatOption.get('fid') === dataList.list[i].fid) {
+                                continue;
+                            } else {
+                                dataList.list[i].selected = false;
+                                this.addOption(dataList.list[i]);
+                            }
                         }
                         this.hasOptions = true;
                     }.bind(this),
@@ -82,15 +87,15 @@ define(function(require) {
             });
             this.$optionContainer.append(optionview.render().el);
         },
-        reFillOption: function(cfg) {
-            var i, len, list;
-            list = optionCollections.getSelectedListGreaterByLevel(cfg.step);
-            len = list.length;
-            for (; i < len; i++) {
-                optionCollections.remove(list[i]);
-            }
-            // optionCollections.reset();
-            this.fillOptions(cfg.filters);
+        reFillOption: function(data) {
+            // var i, len, list;
+            // list = optionCollections.getSelectedListGreaterByLevel(cfg.step);
+            // len = list.length;
+            // for (; i < len; i++) {
+            //     optionCollections.remove(list[i]);
+            // }
+            optionCollections.reset();
+            this.fillOptions(data);
         },
         fillOptions: function(fillData) {
             var len = fillData.length,

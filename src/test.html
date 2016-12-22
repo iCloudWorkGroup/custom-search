@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" src="js/lab/lib/jquery.js"></script>
+    <script type="text/javascript" src="js/lab/lib/underscore.js"></script>
+    <script type="text/javascript">
+        var x = [{
+            name:'zhangsan',
+            age:18
+        },{
+            name:'lisi',
+            age:19
+        },
+        {
+            name:'wangwu',
+            age:20
+        },{
+            name:'zhaoliu',
+            age:21
+        }];
+        var y = _.filter(x,function (item) {
+             return item.age > 18;
+        });
+        console.log(y);
+    </script>
+</body>
+</html>

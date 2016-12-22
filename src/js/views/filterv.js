@@ -105,10 +105,7 @@ define(function(require) {
                 url: CONFIG.oprUrl,
                 data: sendData,
                 success: function(data) {
-                    Backbone.trigger('reFillOption', {
-                        filters: data.filters,
-                        step: cfg.step
-                    });
+                    Backbone.trigger('reFillOption', data.filters);
                     Backbone.trigger('fillExplain', data.explain);
                     Backbone.trigger('fillTable', data.table);
                     cache.explain = data.explain;

@@ -224,3 +224,6 @@
   z-index: -1;
   top: -20px;
 }
+.panel-primary .panel-body{
+  background-color: #d9edf7;
+}

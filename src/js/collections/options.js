@@ -24,6 +24,12 @@ define(function(require) {
             return this.filter(function(item) {
                 return item.get('level') > step;
             });
+        },
+        getSelectedByLevel: function(step) {
+            return this.findWhere({
+                level: step,
+                selected: true
+            });
         }
     });
     return new Options();

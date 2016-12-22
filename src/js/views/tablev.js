@@ -179,7 +179,10 @@ define(function(require) {
                 setCodes.rows.push(curCode);
             } else {
                 $tr.eq(rowIndex).find("td").removeClass("l");
-                setCodes.rows.splice(curCode);
+                var index = setCodes.rows.indexOf(curCode);
+                if (index > -1) {
+                    setCodes.rows.splice(index, 1);
+                }
             }
             this.drawChart.setCheckedByCode(setCodes.rows, setCodes.cols);
             this.cacheStatus(setCodes.rows, setCodes.cols);
@@ -199,7 +202,10 @@ define(function(require) {
                 $tr.each(function() {
                     $("td", this).eq(colIndex).removeClass("t");
                 });
-                setCodes.cols.splice(curCode, 1);
+                var index = setCodes.cols.indexOf(curCode);
+                if (index > -1) {
+                    setCodes.cols.splice(index, 1);
+                }
             }
             this.drawChart.setCheckedByCode(setCodes.rows, setCodes.cols);
             this.cacheStatus(setCodes.rows, setCodes.cols);

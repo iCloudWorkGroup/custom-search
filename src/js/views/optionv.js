@@ -8,7 +8,7 @@ define(function(require) {
             'click': 'additionSelected'
         },
         initialize: function() {
-            this.listenTo(this.model, 'destroy', this.remove);
+            
         },
         render: function() {
             this.el.value = this.model.get ? this.model.get('fid') : this.model.fid;
